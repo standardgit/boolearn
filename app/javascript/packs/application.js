@@ -10,8 +10,8 @@ require("channels")
 require("jquery").start()
 require("popper").start()
 require("bootstrap").start()
-
-import '@fortawesome/fontawesome-free/css/all'
+// require("@fortawesome/fontawesome-free/css/all")
+import "@fortawesome/fontawesome-free/css/all"
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
