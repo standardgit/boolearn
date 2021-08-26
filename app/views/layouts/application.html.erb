@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <title>Boolearn</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,6 +18,8 @@
   <body>
     <%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
-    <%= yield %>
+    <div>
+      <%= yield %>
+    </div>
   </body>
 </html>

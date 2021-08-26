@@ -1,15 +1,46 @@
 <div class = "container">
-  <h1>Welcome Here</h1>
-  <%= link_to "Privacy policy", static_pages_privacy_policy_path %>
-
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="jumbotron">
+    <div class="display-4">
+      What do you want to learn today?
     </div>
+    <div class="p-4"></div>
+    <form class="d-flex">
+      <div class="form-inline my-2 my-lg-0">
+        <%= form_tag(courses_path, method: :get) do %>
+          <div class="input-group">
+            <%= text_field_tag :title, params[:title], autocomplete: 'off', placeholder: 'search', class: 'form-control' %>
+            <span class="input-group-append">
+              <button class="btn btn-primary.btn-sm" type= "submit">
+                <span><i class="fa fa-search" aria-hidden="true"></i></span>
+              </button>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </form>
   </div>
+  <h3>Popular Courses</h3>
+  <hr/>
+   <div class="card-columns">
+    <% @courses.each do |course| %>
+      <%= render 'courses/course', course: course %>
+    <% end %>
+  <div>
+  <h3>Top Rated Courses</h3>
+  <hr/>
+   <div class="card-columns">
+    <% @courses.each do |course| %>
+      <%= render 'courses/course', course: course %>
+    <% end %>
+  <div>
+  <h3>Most Recent Courses</h3>
+  <hr/>
+   <div class="card-columns">
+    <% @courses.each do |course| %>
+      <%= render 'courses/course', course: course %>
+    <% end %>
+  <div>
+  <%= link_to "Privacy policy", static_pages_privacy_policy_path %>
   <%= link_to courses_path, class: "btn btn-success" do %>
     <i class="fas fa-books"></i>
     Courses
