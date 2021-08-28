@@ -10,6 +10,8 @@ require("channels")
 require("jquery").start()
 require("popper").start()
 require("bootstrap").start()
+require("trix")
+require("@rails/actiontext")
 // require("@fortawesome/fontawesome-free/css/all")
 import "@fortawesome/fontawesome-free/css/all"
 
@@ -22,3 +24,6 @@ import "@fortawesome/fontawesome-free/css/all"
 
 
 
+
+require("trix")
+require("@rails/actiontext")
