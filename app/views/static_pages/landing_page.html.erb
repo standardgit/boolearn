@@ -1,9 +1,8 @@
-<div class = "container">
-  <div class="jumbotron">
-    <div class="display-4">
-      What do you want to learn today?
-    </div>
-    <div class="p-4"></div>
+<div class="jumbotron">
+  <div class="display-4">
+    What do you want to learn today?
+  </div>
+  <div class="p-4"></div>
     <form class="d-flex">
       <div class="form-inline my-2 my-lg-0">
         <%= form_tag(courses_path, method: :get) do %>
@@ -18,32 +17,21 @@
         <% end %>
       </div>
     </form>
-  </div>
-  <h3>Popular Courses</h3>
-  <hr/>
-   <div class="card-columns">
-    <% @courses.each do |course| %>
-      <%= render 'courses/course', course: course %>
-    <% end %>
-  <div>
-  <h3>Top Rated Courses</h3>
-  <hr/>
-   <div class="card-columns">
-    <% @courses.each do |course| %>
-      <%= render 'courses/course', course: course %>
-    <% end %>
-  <div>
-  <h3>Most Recent Courses</h3>
-  <hr/>
-   <div class="card-columns">
-    <% @courses.each do |course| %>
-      <%= render 'courses/course', course: course %>
-    <% end %>
-  <div>
-  <%= link_to "Privacy policy", static_pages_privacy_policy_path %>
-  <%= link_to courses_path, class: "btn btn-success" do %>
-    <i class="fas fa-books"></i>
-    Courses
-  <% end %>
 </div>
+ <h3>Popular Courses</h3>
+<br/>
+<div class="card-columns">
+  <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
+<div>
+<br>
+
+
+  
+<%= link_to "Privacy policy", static_pages_privacy_policy_path %>
+<%= link_to courses_path, class: "btn btn-success" do %>
+  <i class="fas fa-books"></i>
+  Courses
+<% end %>
 
