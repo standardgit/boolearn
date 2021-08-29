@@ -18,20 +18,68 @@
       </div>
     </form>
 </div>
- <h3>Popular Courses</h3>
-<br/>
+
+<div class="card-group">
+  <div class="card card-body">
+    <h1>
+      <div class="fa fa-graduation-cap"></div>
+    </h1>
+    <%= Course.count %>
+    online courses
+    <div class="row"></div>
+    Explore a variety of fresh topics
+  </div>
+  <div class="card card-body">
+    <h1>
+      <div class="fa fa-chalkboard-teacher"></div>
+    </h1>
+    <%= Course.distinct.count(:user_id) %>
+    expert instructors
+    <div class="row"></div>
+    Find the right instructor for you
+  </div>
+  <div class="card card-body">
+    <h1>
+      <div class="fa fa-graduate"></div>
+    </h1>
+    <%= Course.count %>
+    active learners
+    <div class="row"></div>
+    Join the knowledge sharing community
+  </div>
+  <div class="card card-body">
+    <h1>
+      <div class="fa fa-infinity"></div>
+    </h1>
+    lifetime access
+    <div class="row"></div>
+    Learn on your schedule
+  </div>
+</div>
+
+<hr/>
+<h3>Popular Courses</h3>
 <div class="card-columns">
   <% @courses.each do |course| %>
     <%= render 'courses/course', course: course %>
   <% end %>
-<div>
-<br>
+</div>
+<hr/>
+<h3>Top Rated Courses</h3>
+<div class="card-columns">
+  <% @courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
+</div>
+<hr>
+<h3>Latest Courses</h3>
+<div class="card-columns">
+  <% @latest_courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
+</div>
 
 
   
-<%= link_to "Privacy policy", static_pages_privacy_policy_path %>
-<%= link_to courses_path, class: "btn btn-success" do %>
-  <i class="fas fa-books"></i>
-  Courses
-<% end %>
+
 

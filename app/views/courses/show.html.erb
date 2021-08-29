@@ -1,7 +1,9 @@
 <%= link_to 'Courses', courses_path %> |
 <%= link_to @course.title, course_path(@course) %>
 <p></p>
-<%= render 'courses/course', course: @course %>
+<div class="card">
+    <%= render 'courses/course', course: @course %>
+</div>
 
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
