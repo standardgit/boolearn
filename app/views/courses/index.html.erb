@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-
-<h1>
-  Courses
-  <%= @courses.count %>
-</h1>
-
+<h2>
+    <div class="text-center">
+        Courses
+        <div class="badge badge-info">
+            <%= @courses.count %>
+        </div>
+    </div>
+</h2>
 <div class="row">
   <div class="col-md-2">
     <%# <%= search_form_for @q do |f|  %> 
