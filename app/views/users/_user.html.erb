@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-header">
         <div class="fa.fa-user"></div>
-        <%= user.email %>
+        <%= link_to user.email, user_path(user) %>
         <div class="card-footer">
             Signed up
             <%= time_ago_in_words(user.created_at) %>
@@ -43,7 +43,9 @@
                     <%= role.name %>
                 </div>
             <% end %>
-            <%= link_to 'Edit Role', edit_user_path(user),class: "btn btn-sm btn-warning" %>
+            <% if policy(user).edit? %>
+                <%= link_to 'Edit Role', edit_user_path(user), class: "btn btn-sm btn-warning" %>
+            <% end %>
         </div>
     </div>
 </div>
