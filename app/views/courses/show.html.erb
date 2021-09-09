@@ -1,3 +1,8 @@
+<% content_for :title do %>
+    Boolearn \|
+    <%= @course.title %>
+<% end %>
+
 <%= link_to 'Courses', courses_path %> |
 <%= link_to @course.title, course_path(@course) %>
 <p></p>

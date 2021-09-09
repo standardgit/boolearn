@@ -117,6 +117,7 @@ GEM
     nokogiri (1.12.3-x64-mingw32)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (4.11.0)
     pg (1.2.3-x64-mingw32)
     popper_js (1.16.0)
     public_activity (1.6.4)
@@ -240,6 +241,7 @@ DEPENDENCIES
   faker
   friendly_id (~> 5.4, >= 5.4.2)
   jbuilder (~> 2.7)
+  pagy (~> 4.11)
   pg (>= 0.18, < 2.0)
   public_activity (~> 1.6, >= 1.6.4)
   puma (~> 4.1)
