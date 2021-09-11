@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :title do %>
+    Boolearn |
+    <%= @enrollment.course %>
+<% end %>
+
 <p>
   <strong>Course:</strong>
   <%= @enrollment.course_id %>
