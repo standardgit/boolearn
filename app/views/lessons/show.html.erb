@@ -1,0 +1,8 @@
+<%= link_to 'Lessons', lessons_path %>/
+<%= link_to @lesson.course.title, course_path(@lesson.course) %>/
+<%= link_to @lesson.title, lessons_path(@lesson) %>
+<p></p>
+
+<%= render 'lessons/lesson', lesson: @lesson %>
+
+<%= link_to 'Back', course_path(@lesson.course) %>

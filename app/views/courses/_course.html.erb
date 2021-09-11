@@ -7,6 +7,10 @@
         <div class="small"><%= simple_format(course.short_description) %></div>
     </div>
     <div class="card-footer">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <%= course.lessons.count %>
+    </div>
+    <div class="card-footer">
         <div class="card-footer">
             <div class="text-center">
                 <%= number_to_currency(course.price) %>
@@ -34,7 +38,7 @@
             <div class="col-md-6">
                 <div class="text-right">
                     <i class="fa fa-chalkboard-teacher" aria-hidden="true"></i>
-                    <%= course.user.username %>
+                    <%= link_to course.user.username, user_path(course.user) %>
                 </div>
             </div>
         </div>

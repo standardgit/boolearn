@@ -1,0 +1,15 @@
+<% content_for :title do %>
+    Boolearn |
+    New Enrollment
+<% end %>
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-lock-open" aria-hidden="true"></i>
+        <h1>New Enrollment</h1>
+    </div>
+    <div class="card-body">
+        <%= render 'form', enrollment: @enrollment %>
+    </div>
+    <div class="card-footer">
+        <%= link_to 'Back', enrollments_path %>
+    </div>

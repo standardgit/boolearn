@@ -10,6 +10,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 gem 'faker'
+gem 'pagy', '~> 4.11'
+gem 'exception_notification', '~> 4.4', '>= 4.4.3'
 
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 # Use SCSS for stylesheets

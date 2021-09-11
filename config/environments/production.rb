@@ -1,4 +1,11 @@
 Rails.application.configure do
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    email_prefix: '[PREFIX] ',
+    sender_address: %{"boolearn error" <notifier@example.com>},
+    exception_recipients: %w{standardblaise@gmail.com}
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
