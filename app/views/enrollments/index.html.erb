@@ -2,7 +2,7 @@
 
 <h1>Enrollments</h1>
 
-<table>
+<table class="table table-bordered table-stripped table-sm">
   <thead>
     <tr>
       <th>Course</th>
@@ -21,7 +21,7 @@
         <td><%= enrollment.user_id %></td>
         <td><%= enrollment.rating %></td>
         <td><%= enrollment.review %></td>
-        <td><%= enrollment.price %></td>
+        <td><%= number_to_currency(enrollment.price) %></td>
         <td><%= link_to 'Show', enrollment %></td>
         <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
         <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
