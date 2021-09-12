@@ -50,4 +50,8 @@ class User < ApplicationRecord
     end
   end
 
+  def buy_course(course)
+    self.enrollments.create(course: course, price: course.price)
+  end
+
 end
