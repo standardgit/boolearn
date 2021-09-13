@@ -8,7 +8,7 @@ module CoursesHelper
             elsif course.price > 0
                 link_to number_to_currency(course.price), new_enrollment_path(course), class: 'btn btn-success'
             else
-                link_to number_to_currency(course.price), new_enrollment_path(course), class: 'btn btn-success'
+                link_to "Free", new_enrollment_path(course), class: 'btn btn-success'
             #logic to buy
             end
         else

@@ -12,10 +12,7 @@ class EnrollmentsController < ApplicationController
   end
 
   # GET /enrollments/new
-  def new
-    @enrollment = Enrollment.new
-    authorize @enrollment
-  end
+  def new; end
 
   # GET /enrollments/1/edit
   def edit
@@ -59,8 +56,8 @@ class EnrollmentsController < ApplicationController
 
   private
 
-    def set_course 
-      @course = Course.friendly.find(params[:course_id])
+    def set_course
+      @course = Course.friendly.find(params[:format])
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_enrollment
