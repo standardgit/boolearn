@@ -12,7 +12,9 @@ class EnrollmentsController < ApplicationController
   end
 
   # GET /enrollments/new
-  def new; end
+  def new
+    @enrollment = Enrollment.new 
+  end
 
   # GET /enrollments/1/edit
   def edit
