@@ -6,6 +6,8 @@ class UsersController < ApplicationController
         @q = User.ransack(params[:q])
         @users = @q.result(distinct: true)
         authorize @users
+
+        @pagy, @users = pagy(@users)
     end
 
     def edit

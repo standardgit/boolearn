@@ -9,6 +9,7 @@ gem 'rails', '~> 6.0.4'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+gem 'pry'
 gem 'faker'
 gem 'pagy', '~> 4.11'
 gem 'exception_notification', '~> 4.4', '>= 4.4.3'

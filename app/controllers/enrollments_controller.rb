@@ -5,16 +5,27 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments or /enrollments.json
   def index
     @enrollments = Enrollment.all
+    #authorize @enrollment
+    #@pagy, @enrollments = pagy(Enrollment.all)
+    @ransack_path = enrollments_path
+    @q = Enrollment.ransack(params[:q])
+    @pagy, @enrollments = pagy(@q.result.includes(:user))
   end
 
   # GET /enrollments/1 or /enrollments/1.json
   def show
   end
 
+  def my_student
+    @ransack_path = my_student_enrollments_path
+    @q = Enrollment.joins(:course).where(courses: {user: current_user}).ransack(params[:q])
+    @pagy, @enrollments = pagy(@q.result.includes(:user))
+    render 'index'
+  end
+
   # GET /enrollments/new
   def new
-    @enrollment = Enrollment.new
-    authorize @enrollment
+    @enrollment = Enrollment.new 
   end
 
   # GET /enrollments/1/edit
@@ -59,12 +70,12 @@ class EnrollmentsController < ApplicationController
 
   private
 
-    def set_course 
-      @course = Course.friendly.find(params[:course_id])
+    def set_course
+      @course = Course.friendly.find(params[:format])
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_enrollment
-      @enrollment = Enrollment.find(params[:id])
+      @enrollment = Enrollment.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
