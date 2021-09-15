@@ -19,25 +19,101 @@
                             Courses
                         <% end %>
                     </li>
-                    <li class="<%= 'active font-weight-bold' if current_page?(courses_path) %> nav-item">
-                        <%= link_to new_course_path, class: 'nav-link' do %>
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            New courses
-                        <% end %>
-                    </li>
-                    <li class="<%= 'active font-weight-bold' if current_page?(users_path) %> nav-item">
-                        <%= link_to users_path, class: 'nav-link' do %>
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                            User
-                        <% end %>
-                    </li>
-                    <li class="<%= 'active font-weight-bold' if current_page?(enrollments_path) %> nav-item">
-                        <%= link_to enrollments_path, class: 'nav-link' do %>
-                            <i class="fa fa-lock-open" aria-hidden="true"></i>
-                            Enrollment
-                        <% end %>
-                    </li>
-                   
+                    <%# <li class="<%= 'active font-weight-bold' if current_page?(courses_path) nav-item"> %>
+                        <%# <%= link_to new_course_path, class: 'nav-link' do %>
+                            <%# <i class="fa fa-plus" aria-hidden="true"></i> %>
+                            <%# New courses %>
+                        <%# <% end %>
+                    <%# </li> %>
+                    <%# <li class="<%= 'active font-weight-bold' if current_page?(users_path) nav-item"> %>
+                        <%# <%= link_to users_path, class: 'nav-link' do %>
+                            <%# <i class="fa fa-users" aria-hidden="true"></i> %>
+                            <%# Users %>
+                        <%# <% end %>
+                    <%# </li> %>
+                    <%# <li class="<%= 'active font-weight-bold' if current_page?(enrollments_path) nav-item"> %>
+                        <%# <%= link_to enrollments_path, class: 'nav-link' do %>
+                            <%# <i class="fa fa-lock-open" aria-hidden="true"></i> %>
+                            <%# Enrollment %>
+                        <%# <% end %>
+                    <%# </li> %>
+                    <% if current_user && current_user.has_role?(:admin) %>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="studentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Learn
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="studentDropdown">
+                                <%= link_to purchased_courses_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    purchased courses
+                                    <div class="badge badge-success">
+                                        <%= current_user.enrollments.count %>
+                                    </div>
+                                <% end %>
+                                <%= link_to pending_review_courses_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    Pending Reviews
+                                    <div class="badge badge-danger">
+                                        <%= current_user.enrollments.pending_review.count %>
+                                    </div>
+                                <% end %>
+                            </ul>
+                        </li>
+                    <% end %>
+                    <% if current_user.has_role?(:teacher) %>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="teacherDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Teacher
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="teacherDropdown">
+                                <%= link_to new_course_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    New Course
+                                <% end %>
+                                <%= link_to created_courses_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                    My Courses
+                                    <div class="badge badge-success">
+                                        <%= current_user.courses.count %>
+                                    </div>
+                                <% end %>
+                                <%= link_to my_student_enrollments_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    My Students
+                                    <div class="badge badge-success">
+                                        <%= Enrollment.joins(:course).where(courses: {user: current_user}).count %>
+                                    </div>
+                                <% end %>
+                            </ul>
+                        </li>
+                    <% end %>
+                    <% if current_user.has_role?(:admin) %>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                <%= link_to users_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    Users
+                                    <div class="badge badge-success">
+                                        <%= User.count %>
+                                    </div>
+                                <% end %>
+                                <%= link_to enrollments_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-lock-open" aria-hidden="true"></i>
+                                    Enrollment
+                                    <div class="badge badge-success">
+                                        <%= Enrollment.count %>
+                                    </div>
+                                <% end %>
+                                <%= link_to static_pages_activity_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-bell" aria-hidden="true"></i>
+                                    Activity
+                                <% end %>
+                            </ul>
+                        </li>
+                    <% end %>
                 </ul>
                 <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
                     <div class="input-group">
@@ -49,26 +125,30 @@
                         </span>
                     </div>
                 <% end %>
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="<%= 'active font-weight-bold' if current_page?(static_pages_activity_path) %> nav-item">
-                        <%= link_to static_pages_activity_path, class: 'nav-link' do %>
-                            <i class="fa fa-bell" aria-hidden="true"></i>
-                            Activity
-                        <% end %>
-                    </li>
-                </ul>
+                <%# <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="<%= 'active font-weight-bold' if current_page?(static_pages_activity_path) nav-item"> %>
+                        <%# <%= link_to static_pages_activity_path, class: 'nav-link' do %>
+                            <%# <i class="fa fa-bell" aria-hidden="true"></i> %>
+                            <%# Activity %>
+                        <%# <% end %>
+                    <%# </li> %>
+                <%# </ul> %>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <b><%= current_user.email %></b>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <%= link_to user_path(current_user), class: "dropdown-item" do %>
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <b> My profile </b>
+                            <% end %>
                             <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
                                 <i class="fa fa-cog" aria-hidden="true"></i>
                                 <b> Account setting </b>
                             <% end %>
                             <%= link_to destroy_user_session_path,method: :delete, class: "dropdown-item" do %>
-                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
                                 <b> Sign out </b>
                             <% end %>
                         </ul>

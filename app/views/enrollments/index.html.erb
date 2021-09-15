@@ -8,12 +8,12 @@
         </div>
     </div>
 </h2>
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, url: @ransack_path do |f| %>
   <%= f.search_field :review_or_course_title_or_user_email_or_rating_or_price_eq, placeholder: "Search by anything" %>
   <%# <%= f.search_field :rating_eq, placeholder: "Search by Rating" %>
   <%= f.submit %>
 <% end %>
-<%= link_to "Refresh", enrollments_path %>
+<%= link_to "Refresh", @ransack_path %>
 <div class="table-responsive">
   <table class="table table-bordered table-stripped table-sm">
     <thead>

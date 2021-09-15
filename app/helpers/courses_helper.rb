@@ -21,7 +21,7 @@ module CoursesHelper
         if current_user
             if user_course.any?
                 if user_course.pending_review.any?
-                    link_to "Add a review", edit_enrollment_path(course.enrollments.where(user: current_user).first)
+                    link_to "Add a review", edit_enrollment_path(course.enrollments.where(user: current_user).first), class: 'btn btn-success'
                 end
             end
         end
