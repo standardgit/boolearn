@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  resources :enrollments
+  resources :enrollments do
+    get :my_student, on: :collection
+  end
   resources :lessons
   devise_for :users
-  resources :courses
+  resources :courses do
+    get :purchased, :pending_review, :created, on: :collection
+  end
   resources :users, only: [:index, :edit, :show, :update]
   root 'static_pages#landing_page'
   get 'static_pages/privacy_policy'
