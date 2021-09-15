@@ -4,12 +4,18 @@ class Enrollment < ApplicationRecord
 
   validates :user_id, :course_id, presence: true
 
+  validates_presence_of :rating, if: :review?
+  validates_presence_of :review, if: :rating?
+
   validates_uniqueness_of :user_id, scope: :course_id #user can't be suscribed to the same course twice
   validates_uniqueness_of :course_id, scope: :user_id #user can't be suscribed to the same course twice
 
   validate :cant_suscribe_to_own_course #user can't create suscribtion if course.user == current_user.id
 
-    scope :pending_review, -> { where(rating: [0, nil, ""], review: [0, nil, ""]) }
+  scope :pending_review, -> { where(rating: [0, nil, ""], review: [0, nil, ""]) }
+
+  extend FriendlyId
+  friendly_id :to_s, use: :slugged
 
   def to_s
     user.to_s + " " + course.to_s

@@ -1,6 +1,5 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[ show edit update destroy ]
-
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
@@ -24,8 +23,6 @@ class LessonsController < ApplicationController
   # POST /lessons or /lessons.json
   def create
     @lesson = Lesson.new(lesson_params)
-    @course = Course.friendly.find(params[:course_id])
-    @lesson.course_id = course.id
     authorize  @lesson
     respond_to do |format|
       if @lesson.save
@@ -70,6 +67,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:title, :content)
+      params.require(:lesson).permit(:title, :content, :course_id)
     end
 end

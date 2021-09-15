@@ -8,6 +8,12 @@
         </div>
     </div>
 </h2>
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :review_or_course_title_or_user_email_or_rating_or_price_eq, placeholder: "Search by anything" %>
+  <%# <%= f.search_field :rating_eq, placeholder: "Search by Rating" %>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Refresh", enrollments_path %>
 <div class="table-responsive">
   <table class="table table-bordered table-stripped table-sm">
     <thead>
@@ -15,27 +21,27 @@
         <th>ID</th>
         <th>
           <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-          Course
+          <%= sort_link(@q, :course_title) %>
         </th>
         <th>
           <i class="fa fa-clock" aria-hidden="true"></i>
-          Bought_at
+          <%= sort_link(@q, :created_at) %>
         </th>
         <th>
           <i class="fa fa-user" aria-hidden="true"></i>
-          User
+          <%= sort_link(@q, :user_email) %>
         </th>
         <th>
           <i class="fas fa-dollar-sign"></i>
-          Price
+          <%= sort_link(@q, :price) %>
         </th>
         <th>
           <i class="fa fa-clock text-warning" aria-hidden="true"></i>
-          Reviewed_at
+          <%= sort_link(@q, :updated_at) %>
         </th>
         <th>
           <i class="fa fa-star text-warning" aria-hidden="true"></i>
-          Rating
+          <%= sort_link(@q, :rating) %>
         </th>
         <th>
           <i class="fa fa-comment" aria-hidden="true"></i>
@@ -68,7 +74,7 @@
     </tbody>
   </table>
 </div>
-
 <br>
+<%== pagy_bootstrap_nav(@pagy) %>
 
 <%= link_to 'New Enrollment', new_enrollment_path %>
