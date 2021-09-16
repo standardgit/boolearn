@@ -58,26 +58,40 @@
     Learn on your schedule
   </div>
 </div>
+<hr/>
+<h3>Continue learning.... <i class="fas fa-school"></i></h3>
+<div class="card-columns">
+  <% @purchased_courses.each do |course| %>
+    <%= render 'courses/course', course: course %>
+  <% end %>
+</div>
 
 <hr/>
-<h3>Popular Courses</h3>
+<h3>Popular Courses <i class="fas fa-chart-line"></i></h3>
 <div class="card-columns">
-  <% @courses.each do |course| %>
+  <% @popular_courses.each do |course| %>
     <%= render 'courses/course', course: course %>
   <% end %>
 </div>
 <hr/>
-<h3>Top Rated Courses</h3>
+<h3>Top Rated Courses <i class="fas fa-star"></i></h3>
 <div class="card-columns">
-  <% @courses.each do |course| %>
+  <% @top_rated_courses.each do |course| %>
     <%= render 'courses/course', course: course %>
   <% end %>
 </div>
 <hr>
-<h3>Latest Courses</h3>
+<h3>Latest Courses <i class="fas fa-clock"></i></h3>
 <div class="card-columns">
   <% @latest_courses.each do |course| %>
     <%= render 'courses/course', course: course %>
+  <% end %>
+</div>
+<hr>
+<h3>What learners are saying <i class="fas fa-comment"></i></h3>
+<div class="card-columns">
+  <% @enrollments.each do |enrollment| %>
+    <%= render 'enrollments/enrollment', enrollment: enrollment %>
   <% end %>
 </div>
 

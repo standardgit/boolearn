@@ -5,7 +5,10 @@ class Course < ApplicationRecord
     validates :title, presence: true
     validates :description, presence: true, length: { :minimum => 5 }
 
-    
+    validates :title, uniqueness: true
+
+    scope :reviewed, -> { where.not(review: [0, nil, ""]) }
+
 
     belongs_to :user, counter_cache: true
     #User.find_each { |user| User.reset_counters(user.id, :courses) }
