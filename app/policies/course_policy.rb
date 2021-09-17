@@ -24,4 +24,8 @@ class CoursePolicy < ApplicationPolicy
   def new?
     @user.has_role?:teacher
   end
+
+  def owner?
+    @record.user_id == @user.id
+  end
 end
