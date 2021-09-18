@@ -16,7 +16,7 @@ class Course < ApplicationRecord
     #User.find_each { |user| User.reset_counters(user.id, :courses) }
     has_many :lessons, dependent: :destroy
     has_many :enrollments
-    has_many :user_lessons
+    has_many :user_lessons, through: :lessons
 
     def to_s
         title
@@ -32,7 +32,10 @@ class Course < ApplicationRecord
     end
 
     def progress(user)
-        user_lessons.where(user: user).count/self.lessons_count
+        unless self.lessons_count == 0
+            user_lessons.where(user: user).count/self.lessons_count.to_f*100
+        end
+    end
 
     def update_rating
         if enrollments.any? && enrollments.where.not(rating: nil).any?
