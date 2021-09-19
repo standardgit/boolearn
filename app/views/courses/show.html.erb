@@ -48,10 +48,11 @@
         <ul class="list-group">
             <% @lessons.each do |lesson| %>
                 <%= render 'lessons/lesson_preview', lesson: lesson %>
+                <p></p>
             <% end %>
         </ul>
         <% if policy(@course).owner? %>
-            <%= link_to 'Add Lesson', new_lesson_path(course_id: @course.id), class: "btn btn-sm btn-primary btn-block" %>
+            <%= link_to 'Add Lesson', new_course_lesson_path(@course, @lesson), class: "btn btn-sm btn-primary btn-block" %>
         <% end %>
     </div>
     <% if policy(@course).edit? %>
