@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   resources :enrollments do
     get :my_student, on: :collection
   end
-  resources :lessons
+  
   devise_for :users
   resources :courses do
+    resources :lessons
     get :purchased, :pending_review, :created, on: :collection
   end
   resources :users, only: [:index, :edit, :show, :update]
