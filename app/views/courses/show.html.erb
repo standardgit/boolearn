@@ -7,17 +7,44 @@
 <%= link_to @course.title, course_path(@course) %>
 <p></p>
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="jumbotron">
             <h2>
                 <i class="fa fa-graduation-cap"></i>
                 <%= @course.title %>
-                <%= @course.description %>
             </h2>
+            <i class="fa fa-clock"></i>
+            <%= @course.updated_at.strftime("%M-%Y") %>
+            <div class="row"></div>
+            <i class="fa fa-language"></i>
+            <%= @course.language %>
+            <div class="row"></div>
+            <i class="fa fa-signal"></i>
+            <%= @course.level %>
+            <p class="3"></p>
+            <%= @course.description %>
         </div>
-        <%= render 'courses/course', course: @course %>
+        <h4>
+            <i class="fa fa-tasks"></i>
+            <%= pluralize(@course.lessons_count, 'lesson') %>
+            <div class="float-right">
+            <i class="fa fa-spinner"></i>
+                <%= number_to_currency(@course.progress(current_user), precision: 0) %>
+            </div>
+        </h4>
+        <h4>
+            <i class="fa fa-tasks"></i>
+            <% pluralize(@enrollments_with_review.count, 'review') %>
+            Reviews:
+            <%= @enrollments_with_review.count %>
+            <% @enrollments_with_review.each do |enrollment| %>
+                <%= render "enrollments/enrollment", enrollment: enrollment %>
+                <p></p>
+            <% end %>
+            <%= render 'courses/course', course: @course %>
+        </h4>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <ul class="list-group">
             <% @lessons.each do |lesson| %>
                 <%= render 'lessons/lesson_preview', lesson: lesson %>
