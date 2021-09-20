@@ -1,8 +1,38 @@
+<% content_for :title do %>
+    Boolearn \|
+    <%= @course.title %>
+<% end %>
+
 <%= link_to 'Courses', courses_path %>/
-<%= link_to @lesson.course.title, course_path(@lesson.course) %>/
+<%= link_to course_path(@lesson.course) do %>
+    <i class="fa fa-graduation-cap"></i>
+    <%=  @lesson.course.title %>
+<% end %>/
 <%= link_to @lesson.title, course_lesson_path(@course, @lesson) %>
 <p></p>
+<div class="row">
+    <div class="col-lg-8">
+        <%= render 'lessons/lesson', lesson: @lesson %>
+        <p></p>
+    </div>
+    <div class="col-lg-4">
+        <ul class="list-group">
+            <li class="list-group-item">
+            </li>
+            <% @lessons.each do |lesson| %>
+                <% if @lesson.present? && lesson == @lesson %>
+                    <li class="list-group-item list-group-item-success">
+                        <%= render 'lessons/lesson_preview', lesson: lesson, class: "" %>
+                    </li>
+                <% else %>
+                    <li class="list-group-item ">
+                        <%= render 'lessons/lesson_preview', lesson: lesson %>
+                    </li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+</div>
 
-<%= render 'lessons/lesson', lesson: @lesson %>
 
 <%= link_to 'Back', course_path(@lesson.course) %>

@@ -47,7 +47,9 @@
     <div class="col-md-6">
         <ul class="list-group">
             <% @lessons.each do |lesson| %>
-                <%= render 'lessons/lesson_preview', lesson: lesson %>
+                <li class="list-group-item">
+                    <%= render 'lessons/lesson_preview', lesson: lesson %>
+                </li>
                 <p></p>
             <% end %>
         </ul>
