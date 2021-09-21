@@ -8,12 +8,27 @@ class StaticPagesController < ApplicationController
     @top_rated_courses = Course.top_rated
     @popular_courses = Course.popular
     @purchased_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).order(created_at: :desc).limit(3)
+
   end
 
   def privacy_policy
   end
 
   def activity
-    @activities = PublicActivity::Activity.all
+    if current_user.has_role?(:admin)
+      @activities = PublicActivity::Activity.all
+    else
+      redirect_to root_path, alert: "You are not allowed to perform this action"
+    end
+  end
+
+  def analytics
+    if current_user.has_role?(:admin)
+      # @users = User.all
+      # @enrollments = Enrollment.all
+      # @courses = Course.all
+    else
+      redirect_to root_path, alert: "You are not allowed to perform this action"
+    end
   end
 end

@@ -37,12 +37,12 @@
             <% pluralize(@enrollments_with_review.count, 'review') %>
             Reviews:
             <%= @enrollments_with_review.count %>
-            <% @enrollments_with_review.each do |enrollment| %>
-                <%= render "enrollments/enrollment", enrollment: enrollment %>
-                <p></p>
-            <% end %>
-            <%= render 'courses/course', course: @course %>
         </h4>
+        <% @enrollments_with_review.each do |enrollment| %>
+            <%= render "enrollments/enrollment", enrollment: enrollment %>
+            <p></p>
+        <% end %>
+        <%= render 'courses/course', course: @course %>
     </div>
     <div class="col-md-6">
         <ul class="list-group">
