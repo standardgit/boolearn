@@ -18,11 +18,19 @@
     <div class="col-lg-4">
         <ul class="list-group">
             <li class="list-group-item">
+                <%= link_to course_path(@lesson.course) do %>
+                    <i class="fa fa-graduation-cap"></i>
+                    <%=  @lesson.course.title %>
+                <% end %>
+                <div class="float-right">
+                    <i class="fa fa-spinner"></i>
+                    <%= number_to_percentage(@course.progress(current_user), precision: 0) %>
+                </div>
             </li>
             <% @lessons.each do |lesson| %>
                 <% if @lesson.present? && lesson == @lesson %>
                     <li class="list-group-item list-group-item-success">
-                        <%= render 'lessons/lesson_preview', lesson: lesson, class: "" %>
+                        <%= render 'lessons/lesson_preview', lesson: lesson %>
                     </li>
                 <% else %>
                     <li class="list-group-item ">
@@ -33,6 +41,3 @@
         </ul>
     </div>
 </div>
-
-
-<%= link_to 'Back', course_path(@lesson.course) %>
