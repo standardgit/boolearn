@@ -4,15 +4,22 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
+  
   resources :courses do
+    member do
+      patch :approve
+      patch :unapprove
+    end
     resources :lessons
     get :purchased, :pending_review, :created, on: :collection
   end
+
   resources :users, only: [:index, :edit, :show, :update]
   root 'static_pages#landing_page'
   get 'static_pages/privacy_policy'
   get 'static_pages/activity'
   get 'static_pages/analytics'
+
   namespace :charts do
     get 'users_per_day'
     get 'enrollments_per_day'

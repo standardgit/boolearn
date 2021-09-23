@@ -3,7 +3,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="form">
     <%= f.input :title %>
     <small><%= f.error :description, class: "text-danger" %></small>
     <%= f.input :description %>
@@ -11,6 +11,7 @@
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>
     <%= f.input :price %>
+    <%= f.input :published %>
   </div>
 
   <div class="form-actions">

@@ -6,7 +6,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.has_role?:admin || @record.user_id == @user.id
+    @record.user_id == @user.id
   end
 
   def create?
@@ -14,7 +14,7 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def update?
-    @user.has_role?:admin || @record.user_id == @user.id
+    @record.user_id == @user.id
   end
 
   def destroy?
