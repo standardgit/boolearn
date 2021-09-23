@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_174044) do
+ActiveRecord::Schema.define(version: 2021_09_21_230838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 2021_09_17_174044) do
     t.float "average_rating", default: 0.0, null: false
     t.integer "enrollments_count", default: 0, null: false
     t.integer "lessons_count", default: 0, null: false
+    t.boolean "published", default: false
+    t.boolean "approved", default: false
     t.index ["slug"], name: "index_courses_on_slug", unique: true
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
@@ -132,6 +134,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_174044) do
   create_table "user_lessons", force: :cascade do |t|
     t.bigint "lesson_id", null: false
     t.bigint "user_id", null: false
+    t.integer "impressions", default: 0, null: false
     t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
     t.index ["user_id"], name: "index_user_lessons_on_user_id"
   end
