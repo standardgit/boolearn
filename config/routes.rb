@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :courses do
+    get :purchased, :pending_review, :created, :unapproved, on: :collection
     member do
       patch :approve
       patch :unapprove
     end
     resources :lessons
-    get :purchased, :pending_review, :created, on: :collection
   end
 
   resources :users, only: [:index, :edit, :show, :update]

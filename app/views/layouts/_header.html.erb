@@ -107,6 +107,13 @@
                                         <%= Enrollment.count %>
                                     </div>
                                 <% end %>
+                                 <%= link_to unapproved_courses_path, class: "dropdown-item" do %>
+                                    <i class="fa fa-lock-open" aria-hidden="true"></i>
+                                    Unapproved Courses
+                                    <div class="badge badge-success">
+                                        <%= Enrollment.count %>
+                                    </div>
+                                <% end %>
                                 <%= link_to static_pages_activity_path, class: "dropdown-item" do %>
                                     <i class="fa fa-bell" aria-hidden="true"></i>
                                     Activity

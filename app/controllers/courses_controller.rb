@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
       # @q = Course.ransack(params[:q])
       # @courses = @q.result.includes(:user)
 
-      @ransack_courses = Course.published.ransack(params[:courses_search], search_key: :courses_search)
+      @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
       #@courses = @ransack_courses.result.includes(:user)
       @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     end
@@ -18,27 +18,42 @@ class CoursesController < ApplicationController
   end
 
   def purchased
-    @pagy, @courses = pagy(Course.joins(:enrollments).where(enrollments: {user: current_user}))
+    @ransack_path = purchased_courses_path
+    @ransack_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render "index"
   end
 
   def pending_review
-    @pagy, @courses = pagy(Course.joins(:enrollments).merge(Enrollment.pending_review.where(user: current_user)))
+    @ransack_path = pending_review_courses_path
+    @ransack_courses = Course.joins(:enrollments).merge(Enrollment.pending_review.where(user: current_user)).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render "index"
   end
 
   def created
-    @pagy, @courses = pagy(Course.where(user: current_user))
+    @ransack_path = created_courses_path
+    @ransack_courses = Course.where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    render "index"
+  end
+
+  def unapproved
+    @ransack_path = unapproved_courses_path
+    @ransack_courses = Course.where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render "index"
   end
 
   def approve
-    @course.update_attr(:approved, true)
+    authorize @course, :approve?
+    @course.update_attribute(:approved, true)
     redirect_to @course, notice: "Course approved and visible"
   end
 
   def unapprove
-    @course.update_attr(:approved, false)
+    authorize @course, :approve?
+    @course.update_attribute(:approved, false)
     redirect_to @course, notice: "Course unapproved and hidden"
   end
 
