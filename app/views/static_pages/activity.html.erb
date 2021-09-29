@@ -12,7 +12,11 @@
             <%= activity.id %>
             <%= activity.trackable_type %>
             <%= activity.trackable_id %>
-            <%= link_to activity.trackable, activity.trackable %>
+            <% if activity.trackable_type == "Lesson" %>
+                <%= link_to activity.trackable, course_lesson_path(activity.trackable.course, activity.trackable) %>
+            <% else %>
+                <%= link_to activity.trackable, activity.trackable %>
+            <% end %>
             <%= activity.key %>
             <%= activity.parameters %>
             <%= activity.owner %>
