@@ -2,11 +2,11 @@ class StaticPagesController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
   def landing_page
     @courses = Course.all.limit(3)
-    @latest_courses = Course.all.latest
+    @latest_courses = Course.all.latest.approved.published
     @enrollments = Enrollment.reviewed.all.order(rating: :desc, created_at: :desc).limit(3)
 
-    @top_rated_courses = Course.top_rated
-    @popular_courses = Course.popular
+    @top_rated_courses = Course.top_rated.approved.published
+    @popular_courses = Course.popular.approved.published
     @purchased_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).order(created_at: :desc).limit(3)
 
   end
