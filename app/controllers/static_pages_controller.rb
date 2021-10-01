@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
-  def landing_page
+  def index
     @courses = Course.all.limit(3)
     @latest_courses = Course.all.latest.approved.published
     @enrollments = Enrollment.reviewed.all.order(rating: :desc, created_at: :desc).limit(3)

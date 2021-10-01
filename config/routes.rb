@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :edit, :show, :update]
-  root 'static_pages#landing_page'
+  root 'static_pages#index'
   get 'static_pages/privacy_policy'
   get 'static_pages/activity'
   get 'static_pages/analytics'
