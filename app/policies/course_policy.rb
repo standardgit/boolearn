@@ -6,34 +6,37 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def show?
-    @record.published && @record.approved || @user.present? && @user.has_role?(:admin) || @user.present? && @record.user_id = @user.id || @record.bought(user)
+    @record.published && @record.approved || 
+    @user.present? && @user.has_role?(:admin) || 
+    @user.present? && @record.user_id == @user.id || 
+    @record.bought(user)
   end
 
   def edit?
-    @record.user_id == @user.id
+     @record.user == @user
   end
 
   def create?
-    @user.has_role?:teacher
+    @user.has_role?(:teacher)
   end
 
   def update?
-    @record.user_id == @user.id
+    @record.user == @user
   end
 
   def destroy?
-    @user.has_role?:admin || @record.user_id == @user.id
+    @user.has_role?(:admin) || @record.user == @user
   end
 
   def approve?
-    @user.has_role?:admin
+    @user.has_role?(:admin)
   end 
 
   def new?
-    @user.has_role?:teacher
+    @user.has_role?(:teacher)
   end
 
   def owner?
-    @record.user_id == @user.id
+    @record.user == @user
   end
 end

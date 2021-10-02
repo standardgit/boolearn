@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :courses do
     get :purchased, :pending_review, :created, :unapproved, on: :collection
     member do
+      get :analytics
       patch :approve
       patch :unapprove
     end
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :edit, :show, :update]
-  root 'static_pages#landing_page'
+  root 'static_pages#index'
   get 'static_pages/privacy_policy'
   get 'static_pages/activity'
   get 'static_pages/analytics'
