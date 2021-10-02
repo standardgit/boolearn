@@ -74,6 +74,8 @@
                 <%# if policy(course).edit? %>
                     <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
                 <%# end %>
+                <%= link_to analytics_course_path(course), class: 'btn btn-sm btn-info' do %>
+                <% end %>
             </div>
         <% end %>
         <% if policy(course).destroy? %>
@@ -85,10 +87,8 @@
                 <% end %>
                 <% if course.approved? %>
                     <div class="badge badge-success">Approved</div>
-                    <%= link_to "Unapprove", unapprove_course_path(course), method: :patch, class: "btn btn-sm btn-successs " %>
                 <% else %>
                     <div class="badge badge-danger">Unapproved</div>
-                    <%= link_to "Approve", approve_course_path(course), method: :patch, class: "btn btn-sm btn-danger " %>
                 <% end %>
             </div>
         <% end %> 
