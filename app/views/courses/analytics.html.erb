@@ -18,3 +18,15 @@
 <h4 class='text-center'>
     Analytics for #{@course.title}
 </h4>
+
+Enrollments per day: Quantity
+<%= bar_chart @course.enrollments.group_by_day(:created_at).count %>
+
+Enrollments per day: Revenue
+<%= bar_chart @course.enrollments.group_by_day(:created_at).sum(:price) %>
+
+Unique user views(number of views)
+<%= bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').count %>
+
+Impressions per lesson(views)
+<%= bar_chart @course.user_lessons.joins(:lesson).group(:'lessons.title').sum(:impressions) %>
