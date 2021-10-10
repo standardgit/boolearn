@@ -6,7 +6,7 @@
   <div class="form">
     <%= f.input :title %>
     <small><%= f.error :description, class: "text-danger" %></small>
-    <%= f.input :description %>
+    <%= f.rich_text_area :description %>
     <%= f.input :short_description %>
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>

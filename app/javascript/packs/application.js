@@ -6,12 +6,16 @@
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-require("channels")
 require("jquery").start()
 require("popper").start()
 require("bootstrap").start()
+require("channels")
 require("trix")
 require("@rails/actiontext")
+require("chartkick")
+require("chart.js")
+require("jquery")
+require("jquery-ui-dist/jquery-ui")
 // require("@fortawesome/fontawesome-free/css/all")
 import "@fortawesome/fontawesome-free/css/all"
 
@@ -23,4 +27,9 @@ import "chartkick/chart.js"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+( function() {
+    ( "#sortable" ).sortable();
+    ( "#sortable" ).disableSelection();
+} );
 
