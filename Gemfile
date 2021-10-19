@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.0.4'
+gem 'rails', '~> 6.1.4.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -31,6 +31,7 @@ gem 'devise'
 gem 'ruby-graphviz'
 gem 'ranked-model', '~> 0.4.7'
 gem 'groupdate'
+gem 'actiontext', '~> 6.1', '>= 6.1.4.1'
 gem 'rolify', '~> 6.0'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
