@@ -8,7 +8,8 @@
     <small><%= f.error :description, class: "text-danger" %></small>
     <%= f.label :description %>
     <%= f.rich_text_area :description %>
-    <%= f.input :short_description %>
+    <%= f.label :short_description %>
+    <%= f.rich_text_area :short_description %>
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>
     <%= f.input :price %>
