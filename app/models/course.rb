@@ -26,7 +26,6 @@ class Course < ApplicationRecord
         title
     end
     has_rich_text :description
-    has_rich_text :short_description
 
 
     include PublicActivity::Model
