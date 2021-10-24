@@ -67,8 +67,8 @@ class LessonsController < ApplicationController
   #SORTABLE
   def sort
     @course = Course.friendly.find(params[:course_id])
-    lesson = Lesson.friendly.find(params[:id])
-    authorize @lesson, :edit?
+    lesson = Lesson.friendly.find(params[:lesson_id])
+    authorize lesson, :edit?
     lesson.update(lesson_params)
     render body: nil
   end
@@ -82,6 +82,6 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:title, :content, :course_id, :row_order_position)
+      params.require(:lesson).permit(:title, :content, :course_id, :id, :row_order_position)
     end
 end

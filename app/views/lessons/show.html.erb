@@ -28,39 +28,20 @@
                 </div>
             </li>
         </ul>
-        <ul class="group-list.lesson-sortable">
+        <ul class="group-list lesson-sortable">
             <% @lessons.each do |lesson| %>
-                <% if @lesson.present? && lesson == @lesson %>
-                    <li class="list-group-item list-group-item-success">
-                        <%= render 'lessons/lesson_preview', lesson: lesson %>
-                    </li>
-                <% else %>
-                    <li class="list-group-item ">
-                        <%= render 'lessons/lesson_preview', lesson: lesson %>
-                    </li>
+                <%= content_tag "div", id: "lesson.#{lesson.id}", data: {model_name: lesson.class.name.underscore, updateUrl: course_lesson_sort_path(@course, lesson)} do %>
+                    <% if @lesson.present? && lesson == @lesson %>
+                        <li class="list-group-item list-group-item-success">
+                            <%= render 'lessons/lesson_preview', lesson: lesson %>
+                        </li>
+                    <% else %>
+                        <li class="list-group-item ">
+                            <%= render 'lessons/lesson_preview', lesson: lesson %>
+                        </li>
+                    <% end %>
                 <% end %>
             <% end %>
         </ul>
     </div>
 </div>
-<script>
-    $(document).on('turbolinks:load', function() {
-        $('.lesson-sortable').sortable({
-            update: function(e, ui){
-                let item = ui.item;
-                let item_data = item.data();
-                let params = {method: 'put'};
-                params[item_data.modelName] = { row_order_position: item.index() }
-                $.ajax({
-                    type: 'POST',
-                    url: item_data.updateUrl,
-                    dataType: 'json',
-                    data: params
-                });
-            },
-            stop: function(e, ui){
-                console.log("stop called when finishing sort of cards")
-            }
-        });
-    });
-</script>
