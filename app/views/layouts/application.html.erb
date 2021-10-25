@@ -15,10 +15,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script>
-      $(document).ready(() => {
-          $('#sortable').sortable();
-          $('#sortable').disableSelection();
-      })
+      $(document).on('turbolinks:load', function() {
+        $('.lesson-sortable').sortable({
+          cursor: "grabbing",
+          cursorAt: { left: 10 }
+          update: function(e, ui){
+            let item = ui.item;
+            let item_data = item.data();
+            let params = {method: 'put'};
+            params[item_data.modelName] = { row_order_position: item.index() }
+            $.ajax({
+                type: 'POST',
+                url: item_data.updateUrl,
+                dataType: 'json',
+                data: params
+            });
+          },
+          stop: function(e, ui){
+            console.log("stop called when finishing sort of cards")
+          }
+        });
+      });
     </script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />

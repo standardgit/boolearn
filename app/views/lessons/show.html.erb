@@ -27,15 +27,19 @@
                     <%= number_to_percentage(@course.progress(current_user), precision: 0) %>
                 </div>
             </li>
+        </ul>
+        <ul class="group-list lesson-sortable">
             <% @lessons.each do |lesson| %>
-                <% if @lesson.present? && lesson == @lesson %>
-                    <li class="list-group-item list-group-item-success">
-                        <%= render 'lessons/lesson_preview', lesson: lesson %>
-                    </li>
-                <% else %>
-                    <li class="list-group-item ">
-                        <%= render 'lessons/lesson_preview', lesson: lesson %>
-                    </li>
+                <%= content_tag "div", id: "lesson.#{lesson.id}", data: {model_name: lesson.class.name.underscore, updateUrl: course_lesson_sort_path(@course, lesson)} do %>
+                    <% if @lesson.present? && lesson == @lesson %>
+                        <li class="list-group-item list-group-item-success">
+                            <%= render 'lessons/lesson_preview', lesson: lesson %>
+                        </li>
+                    <% else %>
+                        <li class="list-group-item ">
+                            <%= render 'lessons/lesson_preview', lesson: lesson %>
+                        </li>
+                    <% end %>
                 <% end %>
             <% end %>
         </ul>
