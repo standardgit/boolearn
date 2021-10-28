@@ -33,6 +33,7 @@ gem 'ranked-model', '~> 0.4.7'
 gem 'groupdate'
 gem 'actiontext', '~> 6.1', '>= 6.1.4.1'
 gem 'rolify', '~> 6.0'
+gem 'aws-sdk-s3', require: false
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'rails-erd', group: :development

@@ -26,7 +26,7 @@ class Course < ApplicationRecord
         title
     end
     has_rich_text :description
-
+    has_one_attached :avatar
 
     include PublicActivity::Model
     tracked owner: Proc.new{ |controller, model| controller.current_user }

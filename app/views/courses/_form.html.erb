@@ -6,6 +6,7 @@
   <div class="form">
     <%= f.input :title %>
     <small><%= f.error :description, class: "text-danger" %></small>
+    <%= f.file_field :avatar %>
     <%= f.input :short_description %>
     <%= f.label :description %>
     <%= f.rich_text_area :description %>
