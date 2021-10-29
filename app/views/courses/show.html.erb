@@ -14,7 +14,9 @@
                 <%= @course.title %>
             </h2>
             <div class="row">
-                <%= image_tag @course.avatar %>
+                <% if @course.avatar.attached? %>
+                    <%= image_tag @course.avatar %>
+                <% end %>
             </div>
             <i class="fa fa-clock"></i>
             <%= @course.updated_at.strftime("%M-%Y") %>
