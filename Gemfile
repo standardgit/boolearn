@@ -14,6 +14,7 @@ gem 'faker'
 gem 'pagy', '~> 4.11'
 gem 'exception_notification', '~> 4.4', '>= 4.4.3'
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
+gem 'active_storage_validations'
 
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 # Use SCSS for stylesheets
