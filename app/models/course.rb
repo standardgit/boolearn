@@ -28,6 +28,8 @@ class Course < ApplicationRecord
     has_rich_text :description
     has_one_attached :avatar
 
+    validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 500.kilobytes , message: 'is not given between size' }
+
     include PublicActivity::Model
     tracked owner: Proc.new{ |controller, model| controller.current_user }
 

@@ -39,6 +39,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (0.9.5)
+      rails (>= 5.2.0)
     activejob (6.1.4.1)
       activesupport (= 6.1.4.1)
       globalid (>= 0.3.6)
@@ -84,9 +86,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
-    bootstrap (4.6.0)
+    bootstrap (5.1.0)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
+      popper_js (>= 2.9.3, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -149,7 +151,7 @@ GEM
     orm_adapter (0.5.0)
     pagy (4.11.0)
     pg (1.2.3-x64-mingw32)
-    popper_js (1.16.0)
+    popper_js (2.9.3)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -278,9 +280,10 @@ PLATFORMS
 
 DEPENDENCIES
   actiontext (~> 6.1, >= 6.1.4.1)
+  active_storage_validations
   aws-sdk-s3
   bootsnap (>= 1.4.2)
-  bootstrap (~> 4.1, >= 4.1.1)
+  bootstrap (~> 5.1.0)
   byebug
   capybara (>= 2.15)
   chartkick (~> 4.0, >= 4.0.5)

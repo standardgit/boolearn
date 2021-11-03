@@ -37,6 +37,7 @@
                             <%# Enrollment %>
                         <%# <% end %>
                     <%# </li> %>
+                   
                     <% if current_user.has_role?(:student) %>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="#" id="studentDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -178,3 +179,5 @@
         </div>
     </div>
 </nav>
+
+
