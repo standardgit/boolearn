@@ -7,6 +7,9 @@
     <%= f.input :title %>
     <%# if @course.avatar.attached? %>
       <%#= image_tag @course.avatar %>
+      <%= @course.avatar.filename %>
+      <%= @course.avatar.content_type %>
+      <%= @course.avatar.content_type %>
     <%# end %>
     <small><%= f.error :avatar, class: "text-danger" %></small>
     <%= f.file_field :avatar %>
