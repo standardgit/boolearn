@@ -3,9 +3,10 @@ class Course < ApplicationRecord
 
     friendly_id :title, use: :slugged
     validates :title, presence: true
-    validates :description, presence: true, length: { :minimum => 5 }
+    validates :description, presence: true, length: { :minimum => 5, :maximum => 3000 }
 
-    validates :title, uniqueness: true
+    validates :title, uniqueness: true, length: { :maximum => 70 }
+    validates :price, numericality: { greater_than_or_equal_to: 0 } 
 
     scope :latest, -> { limit(3).order(created_at: :desc) }
     scope :top_rated, -> { order(average_rating: :desc, created_at: :desc).limit(3) }
@@ -28,7 +29,8 @@ class Course < ApplicationRecord
     has_rich_text :description
     has_one_attached :avatar
 
-    validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 500.kilobytes , message: 'is not given between size' }
+    validates :avatar, presence: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 500.kilobytes , message: 'is not given between size' }
+    #validates :avatar, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], size: { less_than: 500.kilobytes , message: 'is not given between size' }
 
     include PublicActivity::Model
     tracked owner: Proc.new{ |controller, model| controller.current_user }
