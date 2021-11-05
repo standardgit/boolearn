@@ -1,6 +1,7 @@
 class Lesson < ApplicationRecord
 
   validates :title, :content, :course, presence: true
+  validates :title, uniqueness: true, length: { :maximum => 70 }
   belongs_to :course, counter_cache: true
   #Course.find_each { |course| Course.reset_counters(courses.id, :lessons) }
   has_many :user_lessons, dependent: :destroy
