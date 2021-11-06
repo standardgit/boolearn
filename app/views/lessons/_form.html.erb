@@ -5,9 +5,19 @@
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :content %>
+    <%#= f.input :content %>
     <%# <%= f.association :course %> 
+    <%= f.label :content %>
+    <%= f.rich_text_area :content %>
     <%= f.input :course_id, input_html: {value: @lesson.course_id || params[:course_id]}, as: :hidden %>
+     <% if @lesson.video.attached? %>
+      <%= @lesson.video.filename %>
+    <% end %>
+    <%= f.input :video %>
+    <% if @lesson.video_thumbnail.attached? %>
+      <%= @lesson.video_thumbnail.filename %>
+    <% end %>
+    <%= f.input :video_thumbnail %>
   </div>
   <p></p>
   <div class="form-actions">
