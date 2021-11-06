@@ -7,8 +7,13 @@ class Lesson < ApplicationRecord
     size: { less_than: 50.megabytes , message: 'video size should be under 50 megabytes' }
 
   validates :video_thumbnail,
-    content_type: ['image/png', 'image/jpg', 'image/jpeg', 
+    content_type: ['image/png', 'image/jpg', 'image/jpeg'], 
     size: { less_than: 500.kilobytes , message: 'video size should be under 500 kilobytes' }
+
+  # validates :video_thumbnail, presence: true, if: :video_present?
+  # def video_present?
+  #   self.video.present?
+  # end
 
   belongs_to :course, counter_cache: true
   #Course.find_each { |course| Course.reset_counters(courses.id, :lessons) }
