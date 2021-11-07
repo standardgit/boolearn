@@ -12,13 +12,16 @@
             <%#= image_tag @lesson.video_thumbnail %>
             <% if @lesson.video.attached? %>
                 <% if @lesson.video_thumbnail.attached? %>
-                    <video>(controls="true" poster="{url_for @lesson.video_thumbnail}" width="100%" preload="metadata")
+                    <video>(controls="true" poster="#{url_for @lesson.video_thumbnail}" width="100%" preload="metadata")
                         <source src="<%= rails_blob_url(@lesson.video) %>" type="<%= @lesson.video.content_type %>"></source>
                     </video>
                 <% else %>
                     <video>(controls="true" width="100%" preload="metadata")
                         <source src="<%= rails_blob_url(@lesson.video) %>" type="<%= @lesson.video.content_type %>"></source>
                     </video>
+                <% end %>
+                <% if policy(lesson).edit? %>
+                    <%= link_to "Remove Video", delete_video_course_lesson_path(@course, @lesson), method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% end %>
             <% end %>
             <%= lesson.content %>

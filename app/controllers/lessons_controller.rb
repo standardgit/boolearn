@@ -1,8 +1,16 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: %i[ show edit update destroy ]
+  before_action :set_lesson, only: %i[ show edit update destroy delete_video]
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
+  end
+  
+  #Deleting Videos
+  def delete_video
+    authorize @lesson, :edit?
+    @lesson.video.purge
+    @lesson.video_thumbnail.purge
+    redirect_to course_lesson_path(@course, @lesson), notice: "Video was successfully deleted"
   end
 
   # GET /lessons/1 or /lessons/1.json

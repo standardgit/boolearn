@@ -28,4 +28,4 @@ Things you may want to cover:
 
 Working on the testing storage to add images for our lesson
 * Trying to fix the credentials editor problem
-* learning to link s3 bucket to our app
+* Bootstrap dropdown having issues
