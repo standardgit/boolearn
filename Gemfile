@@ -16,9 +16,10 @@ gem 'exception_notification', '~> 4.4', '>= 4.4.3'
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
 gem 'active_storage_validations'
 
-gem 'bootstrap', '~> 5.1.0'
+gem 'bootstrap', '~> 5.1.3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+gem 'jquery-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
