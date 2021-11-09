@@ -19,6 +19,7 @@ require("jquery-ui-dist/jquery-ui")
 // require("@fortawesome/fontawesome-free/css/all")
 import "@fortawesome/fontawesome-free/css/all"
 
+
 import "chartkick/chart.js"
 import "../trix-editor-overrides"
 
