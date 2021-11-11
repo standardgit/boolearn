@@ -5,6 +5,7 @@
 
   <div class="form">
     <%= f.input :title %>
+
     <%# if @course.avatar.attached? %>
       <%#= image_tag @course.avatar %>
       <%= @course.avatar.filename %>
@@ -14,9 +15,10 @@
     <%#= f.file_field :avatar %>
     <%= f.input :avatar %>
     <%= f.input :short_description %>
-    <%= f.label :description %>
-    <small><%= f.error :description, class: "text-danger" %></small>
-    <%= f.rich_text_area :description %>
+    <%#= f.label :description %>
+    <%#= f.rich_text_area :description %>
+    <%# <small><%= f.error :description, class: "text-danger" %>
+    <% f.input :description as: :rich_text_area %>
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>
     <%= f.input :price %>
