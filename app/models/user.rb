@@ -7,9 +7,10 @@ class User < ApplicationRecord
 
   rolify
 
-  has_many :courses
-  has_many :enrollments
-  has_many :user_lessons
+  has_many :courses, dependent: :nullify
+  has_many :enrollments, dependent: :nullify
+  has_many :user_lessons, dependent: :nullify
+  has_many :Comments, dependent: :nullify
 
   
   def to_s
