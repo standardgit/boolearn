@@ -46,6 +46,8 @@
     </div>
 </div>
 
-comment:
+All comment:
+<% @comments.each do |comment|%>
+    <%= render 'lesson/comments/comment' %>
 New comment:
 <%= render 'lessons/comments/form' %>
