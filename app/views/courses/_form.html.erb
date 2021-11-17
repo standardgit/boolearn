@@ -1,17 +1,17 @@
 
-<%= simple_form_for(@course) do |f| %>
+<%= simple_form_for (@course) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form">
     <%= f.input :title %>
 
-    <%# if @course.avatar.attached? %>
-      <%#= image_tag @course.avatar %>
+    <% if @course.avatar.attached? %>
+      <%= image_tag @course.avatar %>
       <%= @course.avatar.filename %>
       <%= @course.avatar.content_type %>
       <%= @course.avatar.content_type %>
-    <%# end %>
+    <% end %>
     <%#= f.file_field :avatar %>
     <%= f.input :avatar %>
     <%= f.input :short_description %>
