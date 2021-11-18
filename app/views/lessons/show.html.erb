@@ -48,6 +48,6 @@
 
 All comment:
 <% @comments.each do |comment|%>
-    <%= render 'lesson/comments/comment' %>
+    <%= render 'lesson/comments/comment', comment: comment %>
 New comment:
 <%= render 'lessons/comments/form' %>
