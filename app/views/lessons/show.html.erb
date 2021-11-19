@@ -46,8 +46,19 @@
     </div>
 </div>
 
-All comment:
+<i class="fa fa-comment"></i>
+comments
+<div class="row"></div>
+<div class="card">
+    <div class="card-header">
+        All comment:
+        <%= @comments.count %>
+    </div>
+    <div class="card-body">
+        <%= render 'lessons/comments/form' %>
+    </div>
+</div>
+<div class="p"></div>
 <% @comments.each do |comment|%>
     <%= render 'lesson/comments/comment', comment: comment %>
-New comment:
-<%= render 'lessons/comments/form' %>
+<% end %>

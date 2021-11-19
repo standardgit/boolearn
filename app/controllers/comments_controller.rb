@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
-        @course = Course.friendly.find(param[:course_id])
-        @lesson = Lesson.friendly.find(params[:id])
+        @course = Course.friendly.find(params[:course_id])
+        @lesson = Lesson.friendly.find(params[:lesson_id])
         @comment.lesson_id = @lesson.id
         @comment.user = current_user
 
@@ -23,6 +23,13 @@ class CommentsController < ApplicationController
             end
           end
     end
+
+    def destroy
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }
+        format.json { head :no_content }
+      end
 
     private
 
