@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
       @lesson = Lesson.friendly.find(params[:lesson_id])
       @comment = Comment.find(params[:id])
       @comment.destroy
+      authorize @comment
       respond_to do |format|
         format.html { redirect_to course_lesson_path(@course, @lesson), notice: "Lesson was successfully destroyed." }
         format.json { head :no_content }
