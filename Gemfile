@@ -30,6 +30,7 @@ gem 'simple_form'
 gem 'ransack'
 gem 'public_activity', '~> 1.6', '>= 1.6.4'
 gem 'devise'
+gem "recaptcha"
 gem 'ruby-graphviz'
 gem 'ranked-model', '~> 0.4.7'
 gem 'groupdate'
