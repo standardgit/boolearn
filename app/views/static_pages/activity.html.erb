@@ -17,8 +17,14 @@
             <% if activity.trackable_type == "Lesson" %>
                 <% if Lesson.where(id: activity.trackable_id).present? %>
                     <%= link_to activity.trackable, course_lesson_path(activity.trackable.course, activity.trackable) %>
-                <% else %>
+                <% elsif %>
                     Lesson was deleted
+                <% elsif activity.trackable_type == "comment" %>
+                    <% if Comment.where(id: activity.trackable_id).present? %>
+                        <%= link_to activity.trackable.self.content, course_lesson_path(activity.trackable.lesson.course, activity.trackable.lesson) %>
+                    <% elsif %>
+                        Lesson was deleted
+                    <% end %>
                 <% end %>
             <% else %>
                 <%= link_to activity.trackable, activity.trackable %>

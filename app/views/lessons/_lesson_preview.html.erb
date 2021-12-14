@@ -4,14 +4,25 @@
     <i class="fa fa-check-square"></i>
 <% end %>
 <%= link_to course_lesson_path(@course, lesson) do %>
-    <%= lesson.row_order_rank + 1 %>
-    <%= lesson.title %>
+    <b>
+        <%= lesson.row_order_rank + 1 %>
+        <%= lesson.title %>
+    </b>
 <% end %>
-<% if policy(lesson).edit? %>
-    <div class="float-right">
-        <%= link_to 'Edit', edit_course_lesson_path(lesson), class: "btn btn-sm btn-warning" %>
-        <%= link_to 'Destroy', [@course,lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
-    </div>
-<% end %>
+<div class="float-right">
+    <i class="fa fa-comment"></i>
+    <%= lesson.comments.count %>
+    <% if policy(lesson).edit? %>
+        <i class="fa fa-eye"></i>
+        <%= lesson.user_lessons.map(&:impressions).sum %>
+        <i class="fa fa-eye"></i>
+        Unique Viewers:
+        <%= lesson.user_lessons.count %>
+        <div class="float-right">
+            <%= link_to 'Edit', edit_course_lesson_path(lesson), class: "btn btn-sm btn-warning" %>
+            <%= link_to 'Destroy', [@course,lesson], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        </div>
+    <% end %>
+</div>
 
 
