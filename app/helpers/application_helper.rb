@@ -21,11 +21,12 @@ module ApplicationHelper
             when 'Lesson'
                 "<i class='fa fa-task'></i>".html_safe
             end
-        when 'Enrollment'
-            "<i class='fa fa-lock-open'></i>".html_safe
+            when 'Enrollment'
+                "<i class='fa fa-lock-open'></i>".html_safe
+            end
+            when 'Comment'
+                "<i class='fa fa-comment '></i>".html_safe
+            end
         end
-    when 'Comment'
-        "<i class='fa fa-comment '></i>".html_safe
-    end
     end
 end
