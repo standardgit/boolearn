@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'static_pages/privacy_policy'
   get 'static_pages/activity'
   get 'static_pages/analytics'
-  #get 'static_pages/privacy_policy', 
+  get 'static_pages/privacy_policy'
 
   namespace :charts do
     get 'users_per_day'
