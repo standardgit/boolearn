@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta content="width=device-width, initial-scale=1.0", :name="viewport"/>
+    <meta description= 'online learning and skill sharing platform'/>
+    <meta keywords= 'online education, course platform, video tutorials, learn, prorams'/>
     <title><%= content_for?(:title) ? yield(:title) : "Boolearn" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -46,6 +47,10 @@
         videoPlayer.addClass('video-js')
         videoPlayer.addClass('vjs-big-play-centered')
       });
+
+      $("video").bind(contextmenu, function() {
+        return false;
+      })
     </script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -58,7 +63,7 @@
       <%= yield %>
       <br/>
     </div>
-    <div class="bg bg-dark">
+    <div class="bg-primary text-dark">
       <%= render 'layouts/footer' %>
     </div>
   </body>

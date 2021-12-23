@@ -19,9 +19,6 @@ require("jquery-ui-dist/jquery-ui")
 // require("@fortawesome/fontawesome-free/css/all")
 import "@fortawesome/fontawesome-free/css/all"
 
-import videojs from 'video.js'
-import 'video.js/dist/video-js.css'
-
 import "chartkick/chart.js"
 import "../trix-editor-overrides"
 import "youtube"
