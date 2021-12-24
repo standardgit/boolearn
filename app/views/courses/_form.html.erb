@@ -4,7 +4,8 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form">
-    <%= f.input :title %>
+    <%= f.input :title, input_html: { autocompile: 'off' } %>
+    <%= f.input :tag_ids %>
 
     <% if @course.avatar.attached? %>
       <%= image_tag @course.avatar %>
