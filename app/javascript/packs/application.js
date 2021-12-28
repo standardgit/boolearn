@@ -16,6 +16,7 @@ require("@rails/actiontext")
 require("chartkick")
 require("chart.js")
 require("jquery-ui-dist/jquery-ui")
+require("selectize")
 // require("@fortawesome/fontawesome-free/css/all")
 import "@fortawesome/fontawesome-free/css/all"
 
