@@ -5,7 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :title, input_html: { autocompile: 'off' } %>
-    <%= f.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, class: "selectize" } %>
+    <%#= f.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, class: "selectize" } %>
 
     <% if @course.avatar.attached? %>
       <%= image_tag @course.avatar %>
@@ -19,7 +19,7 @@
     <%#= f.label :description %>
     <%#= f.rich_text_area :description %>
     <%# <small><%= f.error :description, class: "text-danger" %>
-    <% f.input :description as: :rich_text_area %>
+    <% f.input :description %>
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>
     <%= f.input :price %>
