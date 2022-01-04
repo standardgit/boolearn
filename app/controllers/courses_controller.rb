@@ -73,11 +73,13 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     authorize @course
+    @tags = Tag.all
   end
 
   # GET /courses/1/edit
   def edit
     authorize @course
+    @tags = Tag.all
   end
 
   # POST /courses or /courses.json
@@ -91,6 +93,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
+        @tags = Tag.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
@@ -105,6 +108,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: "Course was successfully updated." }
         format.json { render :show, status: :ok, location: @course }
       else
+        @tags = Tag.all
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
