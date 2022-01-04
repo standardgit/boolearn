@@ -27,6 +27,14 @@
         <%= f.submit %>
     <% end %>
   </div>
+  <div class="row">
+    <% Tag.all.order(course_tags_count: :desc).each do |tag| %>
+      <div class="badge badge-info">
+        <%= tag.name %>
+        <%= tag.course_tags_count %>
+      </div>
+    <% end %>
+  </div>
   <div class="col-md-10">
     <div class="card-columns">
       <% @courses.each do |course| %>
