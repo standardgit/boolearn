@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
 
       @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
       #@courses = @ransack_courses.result.includes(:user)
-      @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+      @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => tags))
     end
 
   end
