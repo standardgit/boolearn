@@ -16,7 +16,7 @@ gem 'exception_notification', '~> 4.4', '>= 4.4.3'
 gem 'chartkick', '~> 4.0', '>= 4.0.5'
 gem 'active_storage_validations'
 
-gem 'bootstrap', '~> 5.1.3'
+gem 'bootstrap', '~> 4.1', '>= 4.1.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem 'jquery-rails'

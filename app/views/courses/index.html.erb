@@ -30,11 +30,13 @@
     <% end %>
   </div>
   <div class="row">
-    <% @tags.all.order(course_tags_count: :desc).each do |tag| %>
-      <div class="badge badge-info">
-        <%= tag.name %>
-        <%= tag.course_tags_count %>
-      </div>
+    <% @tags.order(course_tags_count: :desc).each do |tag| %>
+      <%= link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do %>
+        <div class="badge badge-info">
+          <%= tag.name %>
+          <%= tag.course_tags_count %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div class="col-md-10">
