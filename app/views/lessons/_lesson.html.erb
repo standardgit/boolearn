@@ -23,6 +23,7 @@
                 <% if policy(lesson).edit? %>
                     <%= link_to "Remove Video", delete_video_course_lesson_path(@course, @lesson), method: :delete, data: { confirm: 'Are you sure?' } %>
                 <% end %>
+            <% end %>
             <%= lesson.content %>
         </div>
     <% end %>
