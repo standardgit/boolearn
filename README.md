@@ -25,7 +25,5 @@ Things you may want to cover:
 
 * ...
 
-
-Working on the testing storage to add images for our lesson
-* Trying to fix the credentials editor problem
-* Bootstrap dropdown having issues
+* Trying to deploy app in heroku
+* Having issues as there is a problem with the build.
