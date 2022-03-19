@@ -41,6 +41,9 @@ gem 'aws-sdk-s3', require: false
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'rails-erd', group: :development
+# For certification
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
