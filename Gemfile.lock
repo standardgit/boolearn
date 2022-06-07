@@ -161,6 +161,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.6.1)
     jwt (2.3.0)
+    libv8-node (16.10.0.0)
     loofah (2.12.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -171,6 +172,8 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
+    mini_racer (0.6.2)
+      libv8-node (~> 16.10.0.0)
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
@@ -356,6 +359,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
+  mini_racer
   omniauth-google-oauth2
   pagy (~> 4.11)
   pg (>= 0.18, < 2.0)

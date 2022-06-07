@@ -17,6 +17,7 @@ gem 'chartkick', '~> 4.0', '>= 4.0.5'
 gem 'active_storage_validations'
 
 gem 'bootstrap', '~> 4.1', '>= 4.1.1'
+gem 'mini_racer', platforms: :ruby
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 gem 'jquery-rails'

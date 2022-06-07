@@ -16,9 +16,9 @@
     <%#= f.file_field :avatar %>
     <%= f.input :avatar %>
     <%= f.input :short_description %>
-    <%#= f.label :description %>
-    <%#= f.rich_text_area :description %>
-    <%# <small><%= f.error :description, class: "text-danger" %>
+    <%= f.label :description %>
+    <%= f.rich_text_area :description %>
+    <%= f.error :description, class: "text-danger" %>
     <% f.rich_text_area :description %>
     <%= f.input :language, collection: ["English", "Yoruba", "French"] %>
     <%= f.input :level, collection: ["Beginner", "intermediate", "Advanced"] %>
