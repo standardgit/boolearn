@@ -64,7 +64,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    autoprefixer-rails (10.4.0.0)
+    autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     aws-eventstream (1.2.0)
     aws-partitions (1.520.0)
@@ -293,6 +293,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selectize-rails (0.12.6)
     selenium-webdriver (4.0.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -375,6 +376,7 @@ DEPENDENCIES
   rolify (~> 6.0)
   ruby-graphviz
   sass-rails (>= 6)
+  selectize-rails
   selenium-webdriver
   simple_form
   turbolinks (~> 5)

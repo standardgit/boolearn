@@ -1,12 +1,11 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <div class="container-fluid">
         <a class="navbar-brand" href="/">Boolearn</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <% if current_user %>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mr-auto">
                     <li class="<%= 'active font-weight-bold' if current_page?(root_path) %> nav-item">
                         <%= link_to root_path, class: 'nav-link' do %>
                             <i class="fa fa-home" aria-hidden="true"></i>
@@ -127,25 +126,25 @@
                         </li>
                     <% end %>
                 </ul>
-                <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
-                    <div class="input-group">
-                        <%= f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px;'  %>
-                        <span class="input-group-append">
-                            <button class="btn btn-primary btn-sm" type = "submit">
-                                <span><i class="fa fa-search" aria-hidden="true"></i></span>
-                            </button>
-                        </span>
-                    </div>
-                <% end %>
-                <%# <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="<%= 'active font-weight-bold' if current_page?(static_pages_activity_path) nav-item"> %>
-                        <%# <%= link_to static_pages_activity_path, class: 'nav-link' do %>
-                            <%# <i class="fa fa-bell" aria-hidden="true"></i> %>
-                            <%# Activity %>
-                        <%# <% end %>
-                    <%# </li> %>
-                <%# </ul> %>
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="form-inline my-2 my-lg-0">
+                    <%= search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f| %>
+                        <div class="input-group">
+                            <%= f.search_field :title_cont, class: 'form-control mr-sm-2', style: 'float: left; width: 150px;'  %>
+                            <span class="input-group-append">
+                                <button class="btn btn-primary btn-sm" type = "submit">
+                                    <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                                </button>
+                            </span>
+                        </div>
+                    <% end %>
+                    <%# <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="<%= 'active font-weight-bold' if current_page?(static_pages_activity_path) nav-item"> %>
+                            <%# <%= link_to static_pages_activity_path, class: 'nav-link' do %>
+                                <%# <i class="fa fa-bell" aria-hidden="true"></i> %>
+                                <%# Activity %>
+                            <%# <% end %>
+                        <%# </li> %>
+                    <%# </ul> %>
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <b><%= current_user.email %></b>
@@ -177,7 +176,4 @@
                 </ul>
             <% end %>
         </div>
-    </div>
 </nav>
-
-

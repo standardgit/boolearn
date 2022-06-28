@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       patch :approve
       patch :unapprove
     end
+
+    resources :tags, only: :create
     resources :lessons do
       resources :comments
       put :sort

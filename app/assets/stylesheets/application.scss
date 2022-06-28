@@ -9,17 +9,21 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ *= require selectize
+ *= require selectize.default
  *= require_tree .
  *= require_self
  */
 
- @import "selectize/dist/css/selectize";
- @import "selectize/dist/css/selectize.default";
   
  @import "./actiontext.scss";
  @import "bootstraply";
- body { background-color: #2a4054 }
+ * {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+ }
+  body { background-color: #2a4054 }
  .card, .jumbotron, .list-group-item { color: green; }
  
 .form-control.is-valid{ background-image: none; }

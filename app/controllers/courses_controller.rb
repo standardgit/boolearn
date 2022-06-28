@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
       # @q = Course.ransack(params[:q])
       # @courses = @q.result.includes(:user)
 
-      @tags = Tag.all
+      @tags = Tag.all.where.not(course_tags_count: 0)
       @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
       #@courses = @ransack_courses.result.includes(:user)
       @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
   end
 
   def purchased
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     @ransack_path = purchased_courses_path
     @ransack_courses = Course.joins(:enrollments).where(enrollments: {user: current_user}).ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
   end
 
   def pending_review
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     @ransack_path = pending_review_courses_path
     @ransack_courses = Course.joins(:enrollments).merge(Enrollment.pending_review.where(user: current_user)).ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   end
 
   def created
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     @ransack_path = created_courses_path
     @ransack_courses = Course.where(user: current_user).ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
@@ -45,7 +45,7 @@ class CoursesController < ApplicationController
   end
 
   def unapproved
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     @ransack_path = unapproved_courses_path
     @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user, :course_tags, :course_tags => :tag))
@@ -70,7 +70,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     authorize @course
     @lessons = @course.lessons.rank(:row_order)
     @enrollments_with_review = @course.enrollments.reviewed
@@ -78,7 +78,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/new
   def new
-    @tags = Tag.all
+    @tags = Tag.all.where.not(course_tags_count: 0)
     @course = Course.new
     authorize @course
   end
