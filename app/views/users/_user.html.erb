@@ -31,6 +31,16 @@
         <%= user.last_sign_in_ip %>
     </div>
     <div class="card-footer">
+        <b>Income</b>
+        <%= user.course_income %>
+        <div class="row"></div>
+        <b>Expences</b>
+        <%= user.enrollment_expenses %>
+        <div class="row"></div>
+        <b>Balance</b>
+        <%= user.balance %>
+    </div>
+    <div class="card-footer">
         <b>Courses created:</b>
         <%= user.courses_count %>
         <b>Enrollments:</b>

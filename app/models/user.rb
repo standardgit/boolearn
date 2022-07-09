@@ -3,9 +3,24 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable, :confirmable
+         :recoverable, :rememberable, :validatable, :trackable, :confirmable,
+         :omniauthable
 
   rolify
+
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+
+    # Uncomment the section below if you want users to be created if they don't exist
+    unless user
+        user = User.create(name: data['name'],
+           email: data['email'],
+           password: Devise.friendly_token[0,20]
+        )
+    end
+    user
+  end
 
   has_many :courses, dependent: :nullify
   has_many :enrollments, dependent: :nullify
@@ -56,6 +71,17 @@ class User < ApplicationRecord
     else
       user_lesson.first.increment!(:impressions)
     end
+  end
+
+  def calculate_balance
+    update_column :course_income, (courses.map(&:price).sum)
+    #update_column :enrollment_expenses, (enrollments.map(&:price).sum)
+    update_column :balance, (course_income - enrollment_expenses)
+  end
+
+  def calculate_enrollment_expenses
+    update_column :enrollment_expenses, (enrollments.map(&:price).sum)
+    update_column :balance, (course_income - enrollment_expenses)
   end
 
   private
