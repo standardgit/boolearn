@@ -40,6 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'rolify', '~> 6.0'
 gem 'aws-sdk-s3', require: false
 gem 'pundit', '~> 2.1', '>= 2.1.1'
+gem 'stripe', '~> 6.5'
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'rails-erd', group: :development
 # Use Redis adapter to run Action Cable in production

@@ -35,15 +35,29 @@ class EnrollmentsController < ApplicationController
 
   # POST /enrollments or /enrollments.json
   def create
-    @enrollment = current_user.buy_course(@course)
-    redirect_to course_path(@course), notice: "You are enrolled to this course"
-    # if @course.price > 0
-    #   flash[:alert] = "You cannot access paid courses yet"
-    #   redirect_to new_enrollment_path(@course)
-    # else
-    #   @enrollment = current_user.buy_course(@course)
-    #   redirect_to course_path(@course), notice: "You are enrolled to this course"
-    # end
+   if @course.price > 0
+      customer = Stripe::Customer.create(
+        email: params[:stripeEmail],
+        source: params[:stripeToken]
+      )
+      charge = Stripe::Charge.create(
+        customer: customer.id,
+        amount: (@course.price * 100).to_i,
+        description: @course.title,
+        currency: 'usd'
+      )
+
+      @enrollment = current_user.buy_course(@course)
+      redirect_to course_path(@course), notice: "You are enrolled to this course"
+      #   flash[:alert] = "You cannot access paid courses yet"
+      #   redirect_to new_enrollment_path(@course)
+    else
+      @enrollment = current_user.buy_course(@course)
+      redirect_to course_path(@course), notice: "You are enrolled to this course"
+    end
+    rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_course_enrollment_path(@course)
   end
 
   # PATCH/PUT /enrollments/1 or /enrollments/1.json

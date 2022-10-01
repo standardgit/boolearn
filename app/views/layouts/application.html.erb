@@ -22,11 +22,10 @@
     <%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
     <div class="container">
+      <p></p>
       <%= yield %>
-      <br/>
     </div>
-    <div class="bg-primary text-dark">
-      <%= render 'layouts/footer' %>
-    </div>
+    <br>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
