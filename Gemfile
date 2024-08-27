@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.4'
+ruby '3.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4.1'
+gem 'rails', '7.1.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -31,11 +31,12 @@ gem 'simple_form'
 gem 'ransack'
 gem 'public_activity', '~> 1.6', '>= 1.6.4'
 gem 'devise'
+gem 'psych', '~> 5.1.2'
 gem "recaptcha"
 gem 'ruby-graphviz'
 gem 'ranked-model', '~> 0.4.7'
 gem 'groupdate'
-gem 'actiontext', '~> 6.1', '>= 6.1.4.1'
+gem 'actiontext'
 gem 'omniauth-google-oauth2'
 gem 'rolify', '~> 6.0'
 gem 'aws-sdk-s3', require: false

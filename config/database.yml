@@ -24,8 +24,10 @@ default: &default
 development:
   <<: *default
   database: boolearn_development
-  password: password
-  username: postgres
+  username: <%= ENV["DBUSERNAME"] %>
+  password: <%= ENV["DBPASSWORD"] %>
+  host: <%= ENV["DBHOST"] %>
+  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -60,8 +62,10 @@ development:
 test:
   <<: *default
   database: boolearn_test
-  password: password
-  username: postgres
+  username: <%= ENV["DBUSERNAME"] %>
+  password: <%= ENV["DBPASSWORD"] %>
+  host: <%= ENV["DBHOST"] %>
+  port: 5432
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -83,6 +87,4 @@ test:
 #
 production:
   <<: *default
-  database: boolearn_production
-  username: boolearn
-  password: password
+  url: <%= ENV["DATABASE_URL"] %>
